@@ -1,81 +1,162 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Card from '../components/Card.astro';
+import Until from '../components/DaysUntil.astro';
 ---
 
-<Layout title="Welcome to Astro.">
-	<main>
-		<h1>Welcome to <span class="text-gradient">Astro</span></h1>
-		<p class="instructions">
-			To get started, open the directory <code>src/pages</code> in your project.<br />
-			<strong>Code Challenge:</strong> Tweak the "Welcome to Astro" message above.
-		</p>
-		<ul role="list" class="link-card-grid">
-			<Card
-				href="https://docs.astro.build/"
-				title="Documentation"
-				body="Learn how Astro works and explore the official API docs."
-			/>
-			<Card
-				href="https://astro.build/integrations/"
-				title="Integrations"
-				body="Supercharge your project with new frameworks and libraries."
-			/>
-			<Card
-				href="https://astro.build/themes/"
-				title="Themes"
-				body="Explore a galaxy of community-built starter themes."
-			/>
-			<Card
-				href="https://astro.build/chat/"
-				title="Community"
-				body="Come say hi to our amazing Discord community. ❤️"
-			/>
-		</ul>
+<Layout title="Licznik">
+	<main class="flex flex-col mt-8 align-middle justify-center">
+
+		<h1 class="text-4xl text-center font-bold">Ile do końca roku szkolnego</h1>
+		<p class="text-center"> wg. planu lekcji 2k z L LO w Warszawie</p>
+
+		<div class="flex justify-center py-10">
+
+			<div class="px-20 py-10 text-center">
+				<span class="text-2xl font-bold">
+					<span id="h0">0</span> dnia
+				</span> <br />
+				do końca roku szkolnego
+			</div>
+
+			<div class="px-20 py-10 text-center">
+				<span class="text-2xl font-bold">
+					<Until id="h1" days={[1, 2, 3, 4, 5]} to={new Date("2023-06-22")} /> dni r.
+				</span> <br />
+				do końca roku szkolnego
+			</div>
+
+			<div class="px-20 py-10 text-center">
+				<span class="text-2xl font-bold">
+					<Until id="h2" days={[1, 2, 3, 4, 5]} to={new Date("2023-06-09")} /> dni r.
+				</span> <br />
+				do wystawienia ocen
+			</div>
+
+		</div>
+
+		<table class="w-fit mx-auto text-lg">
+			<caption class="caption-bottom text-sm my-5">
+				dni.r - Dni w które trzeba przyjść do szkoły <br />
+				Format Grupa 1 / Grupa 2; przypuszczana data wystawienia ocen 09/06/2023
+			</caption>
+
+			<thead>
+				<tr>
+					<th class="px-12 py-4">Przedmiot</th>
+					<th class="px-8  py-4">Do wystawienia ocen</th>
+					<th class="px-8  py-4">Do końca roku</th>
+				</tr>
+			</thead>
+
+			<!-- nie -->
+			<tbody>
+				<tr>
+					<td>Język Polski</td>
+					<td> <Until id="po1" days={[3, 4, 4, 5]} to={new Date("2023-06-09")} /> </td>
+					<td> <Until id="pk1" days={[3, 4, 4, 5]} to={new Date("2023-06-22")} /> </td>
+				</tr>
+				<tr>
+					<td>Matematyka</td>
+					<td> <Until id="po2" days={[1,2,2,3,3,5]} to={new Date("2023-06-09")} /> </td>
+					<td> <Until id="pk2" days={[1,2,2,3,3,5]} to={new Date("2023-06-22")} /> </td>
+				</tr>
+				<tr>
+					<td>Język Angielski</td>
+					<td> <Until id="po3" days={[2,2,5]} to={new Date("2023-06-09")} /> / <Until id="po3B" days={[2,4,4]} to={new Date("2023-06-09")} /> </td>
+					<td> <Until id="pk3" days={[2,2,5]} to={new Date("2023-06-22")} /> / <Until id="pk3B" days={[2,4,4]} to={new Date("2023-06-22")} /> </td>
+				</tr>
+				<tr>
+					<td>Fizyka</td>
+					<td> <Until id="po4" days={[1,2,2]} to={new Date("2023-06-09")} /> </td>
+					<td> <Until id="pk4" days={[1,2,2]} to={new Date("2023-06-22")} /> </td>
+				</tr>
+				<tr>
+					<td>Informatyka</td>
+					<td> <Until id="po5" days={[1,4]} to={new Date("2023-06-09")} /> </td>
+					<td> <Until id="pk5" days={[1,4]} to={new Date("2023-06-22")} /> </td>
+				</tr>
+				<tr>
+					<td>Język Niemiecki</td>
+					<td> <Until id="po7" days={[1,1]} to={new Date("2023-06-09")} /> </td>
+					<td> <Until id="pk7" days={[1,1]} to={new Date("2023-06-22")} /> </td>
+				</tr>
+				<tr>
+					<td>Język Rosyjski</td>
+					<td> <Until id="poD" days={[3,3]} to={new Date("2023-06-09")} /> </td>
+					<td> <Until id="pkD" days={[3,3]} to={new Date("2023-06-22")} /> </td>
+				</tr>
+				<tr>
+					<td>Język Portugalski</td>
+					<td> <Until id="poE" days={[3,3]} to={new Date("2023-06-09")} /> </td>
+					<td> <Until id="pkE" days={[3,3]} to={new Date("2023-06-22")} /> </td>
+				</tr>
+				<tr>
+					<td>Chemia</td>
+					<td> <Until id="po6" days={[2,5]} to={new Date("2023-06-09")} /> </td>
+					<td> <Until id="pk6" days={[2,5]} to={new Date("2023-06-22")} /> </td>
+				</tr>
+				<tr>
+					<td>Biologia</td>
+					<td> <Until id="po8" days={[3,5]} to={new Date("2023-06-09")} /> / <Until id="po8B" days={[3,3]} to={new Date("2023-06-09")} /> </td>
+					<td> <Until id="pk8" days={[3,5]} to={new Date("2023-06-22")} /> / <Until id="pk8B" days={[3,3]} to={new Date("2023-06-22")} /> </td>
+				</tr>
+				<tr>
+					<td>Geografia</td>
+					<td> <Until id="po9" days={[2,4]} to={new Date("2023-06-09")} /> </td>
+					<td> <Until id="pk9" days={[2,4]} to={new Date("2023-06-22")} /> </td>
+				</tr>
+				<tr>
+					<td>Historia</td>
+					<td> <Until id="poA" days={[3,5]} to={new Date("2023-06-09")} /> </td>
+					<td> <Until id="pkA" days={[3,5]} to={new Date("2023-06-22")} /> </td>
+				</tr>
+				<tr>
+					<td>Wiedza o Społeczeństwie</td>
+					<td> <Until id="poB" days={[5]} to={new Date("2023-06-09")} /> </td>
+					<td> <Until id="pkB" days={[5]} to={new Date("2023-06-22")} /> </td>
+				</tr>
+				<tr>
+					<td>Podstawy Przedsiębiorczości</td>
+					<td> <Until id="poC" days={[4]} to={new Date("2023-06-09")} /> </td>
+					<td> <Until id="pkC" days={[4]} to={new Date("2023-06-22")} /> </td>
+				</tr>
+				<tr>
+					<td>Wychowanie Fizyczne</td>
+					<td> <Until id="poF" days={[2,4,4]} to={new Date("2023-06-09")} /> / <Until id="poFB" days={[2,4,5]} to={new Date("2023-06-09")} /> </td>
+					<td> <Until id="pkF" days={[2,4,4]} to={new Date("2023-06-22")} /> / <Until id="pkFB" days={[2,4,5]} to={new Date("2023-06-22")} /> </td>
+				</tr>
+			</tbody>
+		</table>
+
 	</main>
 </Layout>
 
+<script>
+	function daysUntilDate(targetDate) {
+		const oneDayInMilliseconds = 1000 * 60 * 60 * 24;
+		const currentDate = new Date();
+		const timeDiffInMilliseconds = targetDate.getTime() - currentDate.getTime();
+		const daysUntil = timeDiffInMilliseconds / oneDayInMilliseconds;
+		return daysUntil.toFixed(7);
+	}
+
+	const h0 = document.getElementById("h0");
+	
+	h0.innerText = daysUntilDate( new Date("2023-06-22"));
+	setInterval(e => {
+		h0.innerText = daysUntilDate( new Date("2023-06-22") );
+	}, 10)
+
+</script>
+
 <style>
-	main {
-		margin: auto;
-		padding: 1.5rem;
-		max-width: 60ch;
+
+	tbody > tr {
+		@apply even:bg-slate-50;
 	}
-	h1 {
-		font-size: 3rem;
-		font-weight: 800;
-		margin: 0;
+
+	tbody > tr > td {
+		@apply px-10 py-1
 	}
-	.text-gradient {
-		background-image: var(--accent-gradient);
-		-webkit-background-clip: text;
-		-webkit-text-fill-color: transparent;
-		background-size: 400%;
-		background-position: 0%;
-	}
-	.instructions {
-		line-height: 1.6;
-		margin: 1rem 0;
-		border: 1px solid rgba(var(--accent), 25%);
-		background-color: white;
-		padding: 1rem;
-		border-radius: 0.4rem;
-	}
-	.instructions code {
-		font-size: 0.875em;
-		font-weight: bold;
-		background: rgba(var(--accent), 12%);
-		color: rgb(var(--accent));
-		border-radius: 4px;
-		padding: 0.3em 0.45em;
-	}
-	.instructions strong {
-		color: rgb(var(--accent));
-	}
-	.link-card-grid {
-		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(24ch, 1fr));
-		gap: 1rem;
-		padding: 0;
-	}
+
 </style>
