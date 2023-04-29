@@ -1,62 +1,26 @@
 ---
+import settings from '../settings';
+const freeDays = settings.freeDays;
+const holidays = freeDays.map(e => new Date(e));
+
+import countWorkDaysUntilDate from "../dates";
+
 export interface Props {
-    id: string,
+	id: string,
 	days: number[]
     to: Date
 }
 
-const { id, to, days } = Astro.props
+const { id, to, days } = Astro.props;
+
+const countDays = countWorkDaysUntilDate( holidays, days, new Date(to) ).toString();
 ---
 
 <span id={id}>0</span>
 
-<script define:vars={{id, days, to}}>
-
-    const holidays = [
-		new Date('2023-05-01'), // Święto Pracy
-		new Date('2023-05-02'), // Święto Flagi
-		new Date('2023-05-03'), // Święto Konstytucji 3 Maja
-
-		// wolne bo matury
-		new Date('2023-05-04'), // Święto Konstytucji 3 Maja
-		new Date('2023-05-05'), // Święto Konstytucji 3 Maja
-		new Date('2023-05-08'), // Święto Konstytucji 3 Maja
-		new Date('2023-05-09'), // Święto Konstytucji 3 Maja
-
-		// inne
-		new Date('2023-05-24'), // Święto Konstytucji 3 Maja
-		new Date('2023-05-25'), // Święto Konstytucji 3 Maja
-		new Date('2023-05-26'), // Święto Konstytucji 3 Maja
-	];
+<script define:vars={{id, countDays}}>
 
 	const countElement = document.getElementById(id);
-
-	function countWorkDaysUntilDate(endDate) {
-
-		let currentDate = new Date();
-		let count = 0;
-
-		while (currentDate < endDate) {
-
-			const currentDayOfWeek = currentDate.getDay();
-
-			// In case of multiple occurences per day
-			const isWeekday = days.filter((element) => element === currentDayOfWeek).length;
-
-			const isHoliday = holidays.some(holiday => {
-				return holiday.getMonth() === currentDate.getMonth() &&
-						holiday.getDate() === currentDate.getDate();
-			});
-
-			if (isWeekday && !isHoliday) count += isWeekday;
-			currentDate.setDate(currentDate.getDate() + 1);
-			
-		}
-
-		return count;
-
-	}
-
-	countElement.innerHTML = countWorkDaysUntilDate( new Date(to) ).toString();
+	countElement.innerHTML = countDays;
 
 </script>
