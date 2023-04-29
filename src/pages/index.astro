@@ -2,6 +2,18 @@
 import Layout from '../layouts/Layout.astro';
 import Until from '../components/DaysUntil.astro';
 import settings from '../settings'
+
+function formatDate(date) {
+		const monthsInRomanNumerals = [
+			"", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X", "XI", "XII"
+		];
+		
+		const day = date.getDate().toString().padStart(2, "0");
+		const monthInRomanNumerals = monthsInRomanNumerals[date.getMonth() + 1];
+		
+		return `${day} ${monthInRomanNumerals}`;
+	}
+
 ---
 
 <Layout title="Ile do wakacji">
@@ -34,17 +46,16 @@ import settings from '../settings'
 
 		</div>
 
-		<table class="w-fit mx-auto text-lg">
+		<table class="mx-auto text-lg">
 
 			<thead>
 				<tr>
-					<th class="px-12 py-4">Przedmiot</th>
-					<th class="px-8  py-4">Do wystawienia ocen</th>
-					<th class="px-8  py-4">Do końca roku</th>
+					<th>Przedmiot</th>
+					<th>{formatDate(new Date(settings.symEndYear))}</th>
+					<th>{formatDate(new Date(settings.endYear))}</th>
 				</tr>
 			</thead>
 
-			<!-- nie -->
 			<tbody>
 				{settings.subjects.map((data) => (
 					<tr>
