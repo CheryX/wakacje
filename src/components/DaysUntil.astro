@@ -1,9 +1,22 @@
 ---
 import settings from '../settings';
-const freeDays = settings.freeDays;
-const holidays = freeDays.map(e => new Date(e));
+import countWorkDaysUntilDate, { getDatesBetween } from "../dates";
 
-import countWorkDaysUntilDate from "../dates";
+const holidays = [
+	...settings.freeDays.map(e => new Date(e)),
+	...getDatesBetween(
+		settings.winterBreak.from,
+		settings.winterBreak.to
+	),
+	...getDatesBetween(
+		settings.summerBreak.from,
+		settings.summerBreak.to
+	),
+	...getDatesBetween(
+		settings.christmasBreak.from,
+		settings.christmasBreak.to
+	),
+]
 
 export interface Props {
 	id: string,

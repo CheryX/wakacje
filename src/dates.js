@@ -25,4 +25,25 @@ function countWorkDaysUntilDate(holidays, days, endDate) {
 
 }
 
+function getDatesBetween(startDate, endDate) {
+    // Create an array to hold the dates
+    var dates = [];
+  
+    // Copy the start date
+    var currentDate = new Date(startDate);
+  
+    // Loop until we reach the end date
+    while (currentDate <= new Date(endDate)) {
+      // Add the current date to the array
+      dates.push(new Date(currentDate));
+  
+      // Move to the next day
+      currentDate.setDate(currentDate.getDate() + 1);
+    }
+  
+    // Return the array of dates
+    return dates;
+  }
+
 export default countWorkDaysUntilDate
+export { getDatesBetween }
