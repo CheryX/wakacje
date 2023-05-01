@@ -14,88 +14,151 @@ function formatDate(date) {
 		return `${day} ${monthInRomanNumerals}`;
 	}
 
+
 ---
 
 <Layout title="Ile do wakacji">
-	<main class="flex flex-col mt-8 align-middle justify-center">
+	<main class="flex justify-evenly h-screen">
 
-		<h1 class="text-4xl text-center font-bold">Ile do końca roku szkolnego</h1>
+		<div class="flex flex-col justify-center w-1/2">
+			
+			<div class="mx-auto">
 
-		<div class="flex justify-center py-4">
+				<h1 class="text-8xl text-center text-[#DEC1FF] font-bold italic">Ile do wakacji</h1>
+				
+				<div class="flex justify-evenly">
+					<div class="timer">
+						<div id="0A">23</div>
+						<span>dni</span>
+					</div>
+					<div class="timer">
+						<div id="0B">23</div>
+						<span>godziny</span>
+					</div>
+					<div class="timer">
+						<div id="0C">23</div>
+						<span>minuty</span>
+					</div>
+					<div class="timer">
+						<div id="0D">23</div>
+						<span>sekundy</span>
+					</div>
+				</div>
 
-			<div class="px-20 py-10 text-center">
-				<span class="text-2xl font-bold">
-					<span id="h0">0</span> dnia
-				</span> <br />
-				do końca roku szkolnego
-			</div>
+				<div class="mt-10 mb-2 text-[#958ACC] font-medium italic text-2xl">albo...</div>
 
-			<div class="px-20 py-10 text-center">
-				<span class="text-2xl font-bold">
-					<Until id="h1" days={[1, 2, 3, 4, 5]} to={new Date(settings.endYear)} /> dni r.
-				</span> <br />
-				do końca roku szkolnego
-			</div>
+				<div class="stats">
+					<div><span id="h0">0</span> dni</div>
+					<div><span id="h1">0</span> tygodni</div>
+					<div><span><Until id="h2" days={[1, 2, 3, 4, 5]} to={new Date(settings.endYear)} /></span> dni roboczych</div>
+					<div><span><Until id="h3" days={[1, 2, 3, 4, 5]} to={new Date(settings.symEndYear)} /></span> dni do ocen</div>
+				</div>
 
-			<div class="px-20 py-10 text-center">
-				<span class="text-2xl font-bold">
-					<Until id="h2" days={[1, 2, 3, 4, 5]} to={new Date(settings.symEndYear)} /> dni r.
-				</span> <br />
-				do wystawienia ocen
 			</div>
 
 		</div>
 
-		<table class="mx-auto text-lg">
-
-			<thead>
-				<tr>
-					<th>Przedmiot</th>
-					<th>{formatDate(new Date(settings.symEndYear))}</th>
-					<th>{formatDate(new Date(settings.endYear))}</th>
-				</tr>
-			</thead>
-
-			<tbody>
-				{settings.subjects.map((data) => (
+		<div class="flex flex-col justify-center w-1/2 font-mono">
+			<table class="mx-auto text-lg">
+	
+				<thead>
 					<tr>
-						<td>{data.name}</td>
-						<td> <Until id={"o_"+data.name} days={data.occurences} to={new Date(settings.symEndYear)} /> </td>
-						<td> <Until id={"k_"+data.name} days={data.occurences} to={new Date(settings.endYear)} /> </td>
+						<th>Przedmiot</th>
+						<th>{formatDate(new Date(settings.symEndYear))}</th>
+						<th>{formatDate(new Date(settings.endYear))}</th>
 					</tr>
-				) )}
-			</tbody>
-		</table>
+				</thead>
+	
+				<tbody>
+					{settings.subjects.map((data) => (
+						<tr>
+							<td>{data.name}</td>
+							<td> <Until id={"o_"+data.name} days={data.occurences} to={new Date(settings.symEndYear)} /> </td>
+							<td> <Until id={"k_"+data.name} days={data.occurences} to={new Date(settings.endYear)} /> </td>
+						</tr>
+					) )}
+				</tbody>
+			</table>
+		</div>
+
+
 
 	</main>
 </Layout>
 
-<script>
+<script define:vars={{settings}}>
+
 	function daysUntilDate(targetDate) {
 		const oneDayInMilliseconds = 1000 * 60 * 60 * 24;
 		const currentDate = new Date();
 		const timeDiffInMilliseconds = targetDate.getTime() - currentDate.getTime();
 		const daysUntil = timeDiffInMilliseconds / oneDayInMilliseconds;
-		return daysUntil.toFixed(7);
+		return daysUntil.toFixed( 7 - Math.floor(Math.log10(daysUntil)) );
+	}
+	
+	function weeksUntilDate(targetDate) {
+		const oneDayInMilliseconds = 1000 * 60 * 60 * 24;
+		const currentDate = new Date();
+		const timeDiffInMilliseconds = targetDate.getTime() - currentDate.getTime();
+		const daysUntil = timeDiffInMilliseconds / oneDayInMilliseconds / 7;
+		return daysUntil.toFixed( 7 - Math.floor(Math.log10(daysUntil)) );
+	}
+	
+
+	let dateFuture = new Date(settings.endYear + "T00:00:00.000+02:00");
+	
+	function updateNumbers() {
+
+		let timeDiff = dateFuture - new Date();
+
+		var days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+		var hours = Math.floor((timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+		var minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
+		var seconds = Math.floor((timeDiff % (1000 * 60)) / 1000);
+
+		document.getElementById("0A").innerText = days;
+		document.getElementById("0B").innerText = hours;
+		document.getElementById("0C").innerText = minutes;
+		document.getElementById("0D").innerText = seconds;
 	}
 
-	const h0 = document.getElementById("h0");
-	
-	h0.innerText = daysUntilDate( new Date("2023-06-22"));
-	setInterval(e => {
-		h0.innerText = daysUntilDate( new Date("2023-06-22") );
-	}, 10)
+	function updateNumbersFast() {
+		document.getElementById("h0").innerText = daysUntilDate(dateFuture);
+		document.getElementById("h1").innerText = weeksUntilDate(dateFuture);
+	}
+
+
+	updateNumbers();
+	updateNumbersFast();
+	setInterval(() => {
+		updateNumbers();
+	}, 1000);
+	setInterval(() => {
+		updateNumbersFast();
+	}, 10);
 
 </script>
 
 <style>
 
-	tbody > tr {
-		@apply even:bg-slate-50;
+	.timer {
+		@apply mt-12 flex flex-col
 	}
 
-	tbody > tr > td {
-		@apply px-10 py-1
+	.timer > div {
+		@apply font-extrabold text-7xl font-mono text-[#ECDCFF] text-center
+	}
+
+	.timer > span {
+		@apply font-semibold text-[#968EBA] text-center text-xl
+	}
+
+	.stats > div {
+		@apply text-[#958ACC] font-mono text-[35px] font-medium
+	}
+
+	.stats span {
+		@apply text-[#DEC1FF] font-mono text-[36px] font-medium
 	}
 
 </style>
