@@ -1,7 +1,7 @@
 
 export default {
-    endYear: "2023-06-23", // Data zakończenia roku szkolnego
-    symEndYear: "2023-06-09", // Data symbolicznego zakończenia roku szkolnego AKA. wystawianie ocen
+    endYear: new Date().getFullYear()+"-06-23", // Data zakończenia roku szkolnego
+    symEndYear: new Date().getFullYear()+"-06-09", // Data symbolicznego zakończenia roku szkolnego AKA. wystawianie ocen
     subjects: [
         {
             name: "Język Polski",
@@ -71,11 +71,11 @@ export default {
         to: "2023-02-26"
     },
     summerBreak: { // Wakacje
-        from: "2023-06-24",
-        to: "2023-08-30",
+        from: new Date().getFullYear()+"-06-24",
+        to: new Date().getFullYear()+"-08-30",
     },
     christmasBreak: {
-        from: "2023-12-23",
-        to: "2023-12-31"
+        from: new Date().getFullYear()+"-12-23",
+        to: new Date().getFullYear()+"-12-31"
     }
 }
