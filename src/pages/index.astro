@@ -59,9 +59,9 @@ function formatDate(date) {
 		</div>
 
 		<div class="flex flex-col justify-center my-32 xl:my-0 xl:w-1/2">
-			<table class="mx-auto text-lg bg-[#816EDC]/10 rounded-xl">
+			<table class="rounded-corners mx-auto text-lg bg-[#816EDC]/10">
 	
-				<thead class="rounded-xl bg-[#564D83] overflow-hidden">
+				<thead class="">
 					<tr class="font-bold">
 						<th class="text-left">Przedmiot</th>
 						<th>{formatDate(new Date(settings.symEndYear))}</th>
@@ -171,6 +171,43 @@ function formatDate(date) {
 
 	tbody > tr {
 		@apply even:bg-[#0E0A1F]/20 odd:bg-none
+	}
+
+	table.rounded-corners {
+	/* Change these properties */
+		--border: 0px solid black;
+		border-radius: 10px;
+
+		/* Don't change these properties */
+		border-spacing: 0;
+		border-collapse: separate;
+		border: var(--border);
+		overflow: hidden;
+	}
+
+	/* Apply a border to the right of all but the last column */
+	table.rounded-corners th:not(:last-child),
+	table.rounded-corners td:not(:last-child) {
+		border-right: var(--border);
+	}
+
+	/* Apply a border to the bottom of all but the last row */
+	table.rounded-corners>thead>tr:not(:last-child)>th,
+	table.rounded-corners>thead>tr:not(:last-child)>td,
+	table.rounded-corners>tbody>tr:not(:last-child)>th,
+	table.rounded-corners>tbody>tr:not(:last-child)>td,
+	table.rounded-corners>tfoot>tr:not(:last-child)>th,
+	table.rounded-corners>tfoot>tr:not(:last-child)>td,
+	table.rounded-corners>tr:not(:last-child)>td,
+	table.rounded-corners>tr:not(:last-child)>th,
+	table.rounded-corners>thead:not(:last-child),
+	table.rounded-corners>tbody:not(:last-child),
+	table.rounded-corners>tfoot:not(:last-child) {
+		border-bottom: var(--border);
+	}
+
+	table.rounded-corners th {
+		background: #564D83;
 	}
 
 </style>
