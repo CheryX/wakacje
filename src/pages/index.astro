@@ -18,9 +18,9 @@ function formatDate(date) {
 ---
 
 <Layout title="Ile do wakacji">
-	<main class="flex justify-evenly h-screen">
+	<main class="flex flex-col xl:flex-row items-center xl:justify-evenly min-h-screen">
 
-		<div class="flex flex-col justify-center w-1/2">
+		<div class="flex flex-col justify-center my-32 xl:my-0 xl:w-1/2">
 			
 			<div class="mx-auto">
 
@@ -58,12 +58,12 @@ function formatDate(date) {
 
 		</div>
 
-		<div class="flex flex-col justify-center w-1/2 font-mono">
-			<table class="mx-auto text-lg">
+		<div class="flex flex-col justify-center my-32 xl:my-0 xl:w-1/2">
+			<table class="mx-auto text-lg bg-[#816EDC]/10 rounded-xl">
 	
-				<thead>
-					<tr>
-						<th>Przedmiot</th>
+				<thead class="rounded-xl bg-[#564D83] overflow-hidden">
+					<tr class="font-bold">
+						<th class="text-left">Przedmiot</th>
 						<th>{formatDate(new Date(settings.symEndYear))}</th>
 						<th>{formatDate(new Date(settings.endYear))}</th>
 					</tr>
@@ -72,9 +72,9 @@ function formatDate(date) {
 				<tbody>
 					{settings.subjects.map((data) => (
 						<tr>
-							<td>{data.name}</td>
-							<td> <Until id={"o_"+data.name} days={data.occurences} to={new Date(settings.symEndYear)} /> </td>
-							<td> <Until id={"k_"+data.name} days={data.occurences} to={new Date(settings.endYear)} /> </td>
+							<td class="">{data.name}</td>
+							<td class="text-center font-mono text-2xl py-1 font-bold"> <Until id={"o_"+data.name} days={data.occurences} to={new Date(settings.symEndYear)} /> </td>
+							<td class="text-center font-mono text-2xl py-1 font-bold"> <Until id={"k_"+data.name} days={data.occurences} to={new Date(settings.endYear)} /> </td>
 						</tr>
 					) )}
 				</tbody>
@@ -159,6 +159,18 @@ function formatDate(date) {
 
 	.stats span {
 		@apply text-[#DEC1FF] font-mono text-[36px] font-medium
+	}
+
+	table > thead > tr > th {
+		@apply py-4 px-12 text-2xl
+	}
+
+	table > tbody > tr > td {
+		@apply py-3 px-12 text-xl
+	}
+
+	tbody > tr {
+		@apply even:bg-[#0E0A1F]/20 odd:bg-none
 	}
 
 </style>
