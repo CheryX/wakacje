@@ -5,15 +5,15 @@ export default {
     subjects: [
         {
             name: "Język Polski",
-            occurences: [ 3, 4, 4, 5 ]
+            occurences: [ 3, 3, 4, 5 ]
         },
         {
             name: "Matematyka",
-            occurences: [ 1, 2, 2, 3, 3, 5 ]
+            occurences: [ 1, 2, 2, 3, 4, 5 ]
         },
         {
             name: "Język Angielski",
-            occurences: [ 2, 2, 5 ]
+            occurences: [ 1, 2, 5 ]
         },
         {
             name: "Fizyka",
@@ -25,7 +25,7 @@ export default {
         },
         {
             name: "Język Niemiecki",
-            occurences: [ 1, 1 ]
+            occurences: [ 3, 3 ]
         },
         {
             name: "Chemia",
@@ -33,11 +33,11 @@ export default {
         },
         {
             name: "Biologia",
-            occurences: [ 3, 5 ]
+            occurences: [ 4, 5 ]
         },
         {
             name: "Geografia",
-            occurences: [ 2, 4 ]
+            occurences: [ 2, 5 ]
         },
         {
             name: "Historia",
@@ -45,11 +45,11 @@ export default {
         },
         {
             name: "Wiedza o Społeczeństwie",
-            occurences: [ 5 ]
+            occurences: [ 4 ]
         },
         {
             name: "Podstawy Przedsiębiorczości",
-            occurences: [ 5 ]
+            occurences: [ 1 ]
         },
         {
             name: "Wychowanie Fizyczne",
