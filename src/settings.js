@@ -1,7 +1,17 @@
 
+const currentYear = new Date().getFullYear()
+let currentSchoolYear = currentYear.toString()
+
+console.log(currentSchoolYear)
+
+if (new Date() > new Date(currentYear, 6, 24)) {
+    currentSchoolYear++;
+}
+
+
 export default {
-    endYear: new Date().getFullYear()+"-06-23", // Data zakończenia roku szkolnego
-    symEndYear: new Date().getFullYear()+"-06-09", // Data symbolicznego zakończenia roku szkolnego AKA. wystawianie ocen
+    endYear: currentSchoolYear+"-06-23", // Data zakończenia roku szkolnego
+    symEndYear: currentSchoolYear+"-06-09", // Data symbolicznego zakończenia roku szkolnego AKA. wystawianie ocen
     subjects: [
         {
             name: "Język Polski",
@@ -71,11 +81,11 @@ export default {
         to: "2023-02-26"
     },
     summerBreak: { // Wakacje
-        from: new Date().getFullYear()+"-06-24",
-        to: new Date().getFullYear()+"-08-30",
+        from: currentSchoolYear+"-06-24",
+        to: currentSchoolYear+"-08-30",
     },
     christmasBreak: {
-        from: new Date().getFullYear()+"-12-23",
-        to: new Date().getFullYear()+"-12-31"
+        from: (currentSchoolYear-1)+"-12-23",
+        to: (currentSchoolYear-1)+"-12-31"
     }
 }
