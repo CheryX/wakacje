@@ -1,8 +1,12 @@
 ---
 import settings from '../settings';
 import countWorkDaysUntilDate, { getDatesBetween } from "../dates";
+import Holidays from 'date-holidays'
+
+let hd = new Holidays('PL').getHolidays().map(e => e.date)
 
 const holidays = [
+	...hd.map(e => new Date(e)),
 	...settings.freeDays.map(e => new Date(e)),
 	...getDatesBetween(
 		settings.winterBreak.from,
@@ -17,6 +21,7 @@ const holidays = [
 		settings.christmasBreak.to
 	),
 ]
+
 
 export interface Props {
 	id: string,
