@@ -15,19 +15,19 @@ export default {
     subjects: [
         {
             name: "Język Polski",
-            occurences: [ 3, 3, 4, 5 ]
+            occurences: [ 1, 3, 3, 5 ]
         },
         {
             name: "Matematyka",
-            occurences: [ 1, 2, 2, 3, 4, 5 ]
+            occurences: [ 1, 2, 2, 3, 4, 4 ]
         },
         {
             name: "Język Angielski",
-            occurences: [ 1, 2, 5 ]
+            occurences: [ 1, 3, 5 ]
         },
         {
             name: "Fizyka",
-            occurences: [ 1, 2, 2 ]
+            occurences: [ 1, 3, 4 ]
         },
         {
             name: "Informatyka",
@@ -35,7 +35,7 @@ export default {
         },
         {
             name: "Język Niemiecki",
-            occurences: [ 3, 3 ]
+            occurences: [ 5, 5 ]
         },
         {
             name: "Chemia",
@@ -47,31 +47,26 @@ export default {
         },
         {
             name: "Geografia",
-            occurences: [ 2, 5 ]
+            occurences: [ 1, 2 ]
         },
         {
             name: "Historia",
-            occurences: [ 3, 5 ]
+            occurences: [ 2, 5 ]
         },
         {
             name: "Wiedza o Społeczeństwie",
-            occurences: [ 4 ]
+            occurences: [ 2 ]
         },
         {
             name: "Podstawy Przedsiębiorczości",
-            occurences: [ 1 ]
+            occurences: [ 3 ]
         },
         {
             name: "Wychowanie Fizyczne",
-            occurences: [ 2, 4, 4 ]
+            occurences: [ 2, 2, 4 ]
         },
     ],
     freeDays: [ // Wolne dni w szkole
-        "2023-05-02",
-        "2023-05-04",
-        "2023-05-05",
-        "2023-05-08",
-        "2023-05-09",
         "2023-05-24",
         "2023-05-25",
         "2023-05-26",
