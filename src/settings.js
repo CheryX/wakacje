@@ -19,7 +19,7 @@ export default {
         },
         {
             name: "Matematyka",
-            occurences: [ 1, 2, 2, 3, 4, 4 ]
+            occurences: [ 1, 2, 2, 3, 4 ]
         },
         {
             name: "Język Angielski",
@@ -27,11 +27,11 @@ export default {
         },
         {
             name: "Fizyka",
-            occurences: [ 1, 3, 4 ]
+            occurences: [ 1, 3, 4, 4 ]
         },
         {
             name: "Informatyka",
-            occurences: [ 1, 4 ]
+            occurences: [ 1, 4, 4 ]
         },
         {
             name: "Język Niemiecki",
@@ -39,23 +39,19 @@ export default {
         },
         {
             name: "Chemia",
-            occurences: [ 2, 5 ]
+            occurences: [ 2 ]
         },
         {
             name: "Biologia",
-            occurences: [ 3, 5 ]
+            occurences: [ 3  ]
         },
         {
             name: "Geografia",
-            occurences: [ 1, 2 ]
+            occurences: [ 1  ]
         },
         {
             name: "Historia",
             occurences: [ 2, 5 ]
-        },
-        {
-            name: "Wiedza o Społeczeństwie",
-            occurences: [ 2 ]
         },
         {
             name: "Podstawy Przedsiębiorczości",
@@ -67,16 +63,11 @@ export default {
         },
     ],
     freeDays: [ // Wolne dni w szkole
-        "2023-05-24",
-        "2023-05-25",
-        "2023-05-26",
-        "2023-06-08",
-        "2023-06-09",
-        "2023-06-22"
+        "2023-05-01"
     ],
     winterBreak: { // Ferie Zimowe
-        from: "2023-02-13",
-        to: "2023-02-26"
+        from: "2024-01-13",
+        to: "2024-01-26"
     },
     summerBreak: { // Wakacje
         from: currentSchoolYear+"-06-24",
