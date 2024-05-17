@@ -63,7 +63,7 @@ export default {
         },
     ],
     freeDays: [ // Wolne dni w szkole
-        "2023-05-01"
+        "2024-05-01"
     ],
     winterBreak: { // Ferie Zimowe
         from: "2024-01-13",
