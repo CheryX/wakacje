@@ -10,8 +10,8 @@ if (new Date() > new Date(currentYear, 6, 24)) {
 
 
 export default {
-    endYear: currentSchoolYear+"-06-23", // Data zakończenia roku szkolnego
-    symEndYear: currentSchoolYear+"-06-12", // Data symbolicznego zakończenia roku szkolnego AKA. wystawianie ocen
+    endYear: currentSchoolYear+"-06-21", // Data zakończenia roku szkolnego
+    symEndYear: currentSchoolYear+"-06-14", // Data symbolicznego zakończenia roku szkolnego AKA. wystawianie ocen
     subjects: [
         {
             name: "Język Polski",
@@ -63,7 +63,10 @@ export default {
         },
     ],
     freeDays: [ // Wolne dni w szkole
-        "2024-05-01"
+        "2024-05-01",
+        "2024-05-30",
+        "2024-05-31",
+        "2024-06-20"
     ],
     winterBreak: { // Ferie Zimowe
         from: "2024-01-13",
