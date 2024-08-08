@@ -17,3 +17,9 @@
   background: #403025;
   background: linear-gradient(120deg in oklch, #403025 0%, #474231 100%);
 }
+
+@media (max-width: 768px) {
+  #small_rotate > th {
+    writing-mode: vertical-lr;
+  }
+}

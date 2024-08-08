@@ -134,7 +134,7 @@ export default function Home() {
         </div>
         <table className="mx-auto mb-8 w-full max-w-4xl table-fixed border-collapse border border-black *:*:*:border *:*:*:border-black text-center">
           <thead>
-            <tr>
+            <tr id="small_rotate">
               <th> </th>
               <th>Język Polski</th>
               <th>Matematyka</th>
