@@ -1,0 +1,19 @@
+.gradient-0 {
+  background: #181330;
+  background: linear-gradient(120deg in oklch, #181330 0%, #2b2231 100%);
+}
+
+.gradient-1 {
+  background: #342540;
+  background: linear-gradient(120deg in oklch, #342540 0%, #473244 100%);
+}
+
+.gradient-2 {
+  background: #402525;
+  background: linear-gradient(120deg in oklch, #402525 0%, #473532 100%);
+}
+
+.gradient-3 {
+  background: #403025;
+  background: linear-gradient(120deg in oklch, #403025 0%, #474231 100%);
+}
