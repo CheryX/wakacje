@@ -30,14 +30,14 @@ export default function ProgressBar({
   return (
     <div>
       <div
-        className="text-teal-500 font-bold text-center"
+        className="text-violet-500 font-bold text-center"
         style={{ translate: `${progress - 50}% 0` }}
       >
         {progress.toPrecision(3)}%
       </div>
       <div className="bg-slate-50/10 rounded-lg w-full h-4">
         <div
-          className="bg-teal-500/70 rounded-lg h-4"
+          className="bg-violet-500/70 rounded-lg h-4"
           style={{
             width: `${progress}%`,
           }}
