@@ -7,30 +7,48 @@ import ProgressBar from "@/components/progress_bar";
 import { useEffect, useState } from "react";
 
 import "@/styles/colors.css";
+import { countWorkdays, formatDate } from "@/utils/date";
 
 export default function Home() {
   const currentSchoolYear = getCurrectSchoolYear();
   const dates = getAllDates(currentSchoolYear);
+  const [finalYear, setFinalYear] = useState(false);
+  const [expiryTimestamp, setExpiryTimestamp] = useState(dates.end);
 
-  const { seconds, minutes, hours, days } = useTimer({
-    expiryTimestamp: dates.end,
+  const { seconds, minutes, hours, days, restart } = useTimer({
+    expiryTimestamp,
     onExpire: () => console.warn("onExpire called"),
   });
 
-  const [finalYear, setFinalYear] = useState(false);
+  function daysUntilDate(targetDate: Date) {
+    const oneDayInMilliseconds = 1000 * 60 * 60 * 24;
+    const currentDate = new Date();
+    const timeDiffInMilliseconds = targetDate.getTime() - currentDate.getTime();
+    const daysUntil = timeDiffInMilliseconds / oneDayInMilliseconds;
+    return daysUntil.toFixed(6);
+  }
 
-  const deltaDays =
-    (dates.final_grades.getTime() - dates.final_grad_grades.getTime()) /
-    (1000 * 60 * 60 * 24);
+  const [time, setTime] = useState("");
 
   useEffect(() => {
-    document.title = `Pozostało ${
-      finalYear ? days - deltaDays : days
-    }d ${hours}h ${minutes}m ${seconds}s`;
-  }, [seconds, minutes, hours, days, finalYear, deltaDays]);
+    const interval = setInterval(
+      () => setTime(daysUntilDate(finalYear ? dates.grad_end : dates.end)),
+      10
+    );
+    return () => {
+      clearInterval(interval);
+    };
+  }, [dates.end, dates.grad_end, finalYear]);
+
+  useEffect(() => {
+    document.title = `Pozostało ${days}d ${hours}h ${minutes}m ${seconds}s`;
+  }, [seconds, minutes, hours, days]);
 
   const handleCheckboxChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setFinalYear(event.target.checked);
+    setExpiryTimestamp(finalYear ? dates.grad_end : dates.end);
+
+    restart(expiryTimestamp);
   };
 
   let gradientType = 0;
@@ -44,6 +62,9 @@ export default function Home() {
     gradientType = 3;
   }
 
+  const d0 = finalYear ? dates.grad_end : dates.end;
+  const d1 = finalYear ? dates.final_grad_grades : dates.final_grades;
+
   return (
     <main className={`gradient-${gradientType}`}>
       <section className="h-screen max-w-2xl flex flex-col mx-auto items-center justify-center">
@@ -51,9 +72,7 @@ export default function Home() {
 
         <div className="inline-grid grid-cols-2 md:grid-cols-4 py-16 text-center gap-12 w-full">
           <div className="flex flex-col align-center">
-            <div className="text-7xl font-bold">
-              {finalYear ? days - deltaDays : days}
-            </div>
+            <div className="text-7xl font-bold">{days}</div>
             <div className="opacity-60">dni</div>
           </div>
           <div className="flex flex-col align-center">
@@ -87,16 +106,22 @@ export default function Home() {
           </label>
         </div>
       </section>
-      <section className="bg-white text-black">
-        <div className="flex justify-center py-4">
-          <div className="px-20 py-10 text-center">
+      <section className="bg-slate-50 text-slate-900">
+        <div className="flex justify-center *:flex-1 py-16 max-w-4xl mx-auto">
+          <div className="text-center">
+            <span className="text-2xl font-bold">{time} dni</span>
+            <br />
+            do końca roku szkolnego
+          </div>
+
+          <div className="text-center">
             <span className="text-2xl font-bold">
               <Countdown until={finalYear ? dates.grad_end : dates.end} /> dni
             </span>
             <br />
             do końca roku szkolnego
           </div>
-          <div className="px-20 py-10 text-center">
+          <div className="text-center">
             <span className="text-2xl font-bold">
               <Countdown
                 until={finalYear ? dates.final_grad_grades : dates.final_grades}
@@ -107,6 +132,78 @@ export default function Home() {
             do wystawienia ocen
           </div>
         </div>
+        <table className="mx-auto mb-8 w-full max-w-4xl table-fixed border-collapse border border-black *:*:*:border *:*:*:border-black text-center">
+          <thead>
+            <tr>
+              <th> </th>
+              <th>Język Polski</th>
+              <th>Matematyka</th>
+              <th>Język Angielski</th>
+              <th>Informatyka</th>
+              <th>Fizyka</th>
+              <th>Historia</th>
+              <th>Język Niemiecki</th>
+              <th>WF</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td className="font-bold">{formatDate(d1)}</td>
+              <td>
+                <Countdown until={d1} weekdays={[1, 1, 1, 1, 1]} />
+              </td>
+              <td>
+                <Countdown until={d1} weekdays={[1, 1, 1, 1]} />
+              </td>
+              <td>
+                <Countdown until={d1} weekdays={[1, 1, 1]} />
+              </td>
+              <td>
+                <Countdown until={d1} weekdays={[1, 1, 1, 1]} />
+              </td>
+              <td>
+                <Countdown until={d1} weekdays={[1, 1, 1]} />
+              </td>
+              <td>
+                <Countdown until={d1} weekdays={[1, 1]} />
+              </td>
+              <td>
+                <Countdown until={d1} weekdays={[1, 1]} />
+              </td>
+              <td>
+                <Countdown until={d1} weekdays={[1, 1, 1]} />
+              </td>
+            </tr>
+            <tr>
+              <td className="font-bold">{formatDate(d0)}</td>
+              <td>
+                <Countdown until={d0} weekdays={[1, 1, 1, 1, 1]} />
+              </td>
+              <td>
+                <Countdown until={d0} weekdays={[1, 1, 1, 1]} />
+              </td>
+              <td>
+                <Countdown until={d0} weekdays={[1, 1, 1]} />
+              </td>
+              <td>
+                <Countdown until={d0} weekdays={[1, 1, 1, 1]} />
+              </td>
+              <td>
+                <Countdown until={d0} weekdays={[1, 1, 1]} />
+              </td>
+              <td>
+                <Countdown until={d0} weekdays={[1, 1]} />
+              </td>
+              <td>
+                <Countdown until={d0} weekdays={[1, 1]} />
+              </td>
+              <td>
+                <Countdown until={d0} weekdays={[1, 1, 1]} />
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <hr />
       </section>
     </main>
   );
