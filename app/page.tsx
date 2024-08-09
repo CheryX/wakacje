@@ -7,11 +7,12 @@ import ProgressBar from "@/components/progress_bar";
 import { useEffect, useState } from "react";
 
 import "@/styles/colors.css";
-import { countWorkdays, formatDate } from "@/utils/date";
+import { formatDate } from "@/utils/date";
 
 export default function Home() {
   const currentSchoolYear = getCurrectSchoolYear();
   const dates = getAllDates(currentSchoolYear);
+
   const [finalYear, setFinalYear] = useState(false);
   const [expiryTimestamp, setExpiryTimestamp] = useState(dates.end);
 
@@ -19,26 +20,6 @@ export default function Home() {
     expiryTimestamp,
     onExpire: () => console.warn("onExpire called"),
   });
-
-  function daysUntilDate(targetDate: Date) {
-    const oneDayInMilliseconds = 1000 * 60 * 60 * 24;
-    const currentDate = new Date();
-    const timeDiffInMilliseconds = targetDate.getTime() - currentDate.getTime();
-    const daysUntil = timeDiffInMilliseconds / oneDayInMilliseconds;
-    return daysUntil.toFixed(6);
-  }
-
-  const [time, setTime] = useState("");
-
-  useEffect(() => {
-    const interval = setInterval(
-      () => setTime(daysUntilDate(finalYear ? dates.grad_end : dates.end)),
-      10
-    );
-    return () => {
-      clearInterval(interval);
-    };
-  }, [dates.end, dates.grad_end, finalYear]);
 
   useEffect(() => {
     document.title = `Pozostało ${days}d ${hours}h ${minutes}m ${seconds}s`;
@@ -64,6 +45,10 @@ export default function Home() {
 
   const d0 = finalYear ? dates.grad_end : dates.end;
   const d1 = finalYear ? dates.final_grad_grades : dates.final_grades;
+
+  const hoursToEnd = Math.floor(
+    (d0.getTime() - new Date().getTime()) / (1000 * 60 * 60)
+  );
 
   return (
     <main className={`gradient-${gradientType}`}>
@@ -109,14 +94,14 @@ export default function Home() {
       <section className="bg-slate-50 text-slate-900">
         <div className="flex justify-center *:flex-1 py-16 max-w-4xl mx-auto">
           <div className="text-center">
-            <span className="text-2xl font-bold">{time} dni</span>
+            <span className="text-2xl font-bold">{hoursToEnd} godzin</span>
             <br />
             do końca roku szkolnego
           </div>
 
           <div className="text-center">
             <span className="text-2xl font-bold">
-              <Countdown until={finalYear ? dates.grad_end : dates.end} /> dni
+              <Countdown until={finalYear ? dates.grad_end : dates.end} /> dni*
             </span>
             <br />
             do końca roku szkolnego
@@ -126,7 +111,7 @@ export default function Home() {
               <Countdown
                 until={finalYear ? dates.final_grad_grades : dates.final_grades}
               />{" "}
-              dni
+              dni*
             </span>
             <br />
             do wystawienia ocen
@@ -203,6 +188,10 @@ export default function Home() {
             </tr>
           </tbody>
         </table>
+
+        <p className="mx-auto max-w-4xl w-full mb-8">
+          * wyłączając dni wolne od zajęć.
+        </p>
         <hr />
       </section>
     </main>
