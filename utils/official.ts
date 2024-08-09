@@ -40,7 +40,7 @@ export default function getAllDates(year: number): Record<DateTypes, Date> {
 
 export function getCurrectSchoolYear(): number {
   let currentSchoolYear = new Date().getFullYear();
-  currentSchoolYear += new Date().getMonth() >= 7 ? 1 : 0; // The new school year will display on September 1st
+  currentSchoolYear += new Date().getMonth() >= 8 ? 1 : 0; // The new school year will display on September 1st
 
   return currentSchoolYear;
 }

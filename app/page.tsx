@@ -94,7 +94,9 @@ export default function Home() {
       <section className="bg-slate-50 text-slate-900">
         <div className="flex justify-center *:flex-1 py-16 max-w-4xl mx-auto">
           <div className="text-center">
-            <span className="text-2xl font-bold">{hoursToEnd} godzin</span>
+            <span className="text-2xl font-bold">
+              {Math.max(hoursToEnd, 0)} godzin
+            </span>
             <br />
             do końca roku szkolnego
           </div>
