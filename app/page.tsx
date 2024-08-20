@@ -79,7 +79,7 @@ export default function Home() {
             end={finalYear ? dates.grad_end : dates.end}
           />
         </div>
-        <div className="bottom-0 left-0 absolute m-2">
+        <div className="bottom-0 left-0 absolute m-2 opacity-10 hover:opacity-100">
           <label>
             Rok maturalny
             <input
