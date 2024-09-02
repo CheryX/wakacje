@@ -137,28 +137,28 @@ export default function Home() {
             <tr>
               <td className="font-bold">{formatDate(d1)}</td>
               <td>
-                <Countdown until={d1} weekdays={[1, 1, 1, 1, 1]} />
+                <Countdown until={d1} weekdays={[0, 1, 4, 4]} />
               </td>
               <td>
-                <Countdown until={d1} weekdays={[1, 1, 1, 1]} />
+                <Countdown until={d1} weekdays={[1, 1, 3, 4, 4]} />
               </td>
               <td>
-                <Countdown until={d1} weekdays={[1, 1, 1]} />
+                <Countdown until={d1} weekdays={[0, 2, 3]} />
               </td>
               <td>
-                <Countdown until={d1} weekdays={[1, 1, 1, 1]} />
+                <Countdown until={d1} weekdays={[1, 4, 4]} />
               </td>
               <td>
-                <Countdown until={d1} weekdays={[1, 1, 1]} />
+                <Countdown until={d1} weekdays={[1, 1, 3]} />
               </td>
               <td>
-                <Countdown until={d1} weekdays={[1, 1]} />
+                <Countdown until={d1} weekdays={[0, 2]} />
               </td>
               <td>
-                <Countdown until={d1} weekdays={[1, 1]} />
+                <Countdown until={d1} weekdays={[0, 0]} />
               </td>
               <td>
-                <Countdown until={d1} weekdays={[1, 1, 1]} />
+                <Countdown until={d1} weekdays={[1, 2, 3]} />
               </td>
             </tr>
             <tr>
