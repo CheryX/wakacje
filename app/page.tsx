@@ -137,55 +137,55 @@ export default function Home() {
             <tr>
               <td className="font-bold">{formatDate(d1)}</td>
               <td>
-                <Countdown until={d1} weekdays={[0, 1, 4, 4]} />
+                <Countdown until={d1} weekdays={[1, 2, 2, 4]} />
               </td>
               <td>
-                <Countdown until={d1} weekdays={[1, 1, 3, 4, 4]} />
+                <Countdown until={d1} weekdays={[0, 1, 1, 3, 3]} />
               </td>
               <td>
-                <Countdown until={d1} weekdays={[0, 2, 3]} />
+                <Countdown until={d1} weekdays={[0, 2, 2]} />
               </td>
               <td>
-                <Countdown until={d1} weekdays={[1, 4, 4]} />
+                <Countdown until={d1} weekdays={[3, 3, 4]} />
               </td>
               <td>
-                <Countdown until={d1} weekdays={[1, 1, 3]} />
+                <Countdown until={d1} weekdays={[1, 3]} />
               </td>
               <td>
-                <Countdown until={d1} weekdays={[0, 2]} />
+                <Countdown until={d1} weekdays={[2, 4]} />
               </td>
               <td>
                 <Countdown until={d1} weekdays={[0, 0]} />
               </td>
               <td>
-                <Countdown until={d1} weekdays={[1, 2, 3]} />
+                <Countdown until={d1} weekdays={[2, 2]} />
               </td>
             </tr>
             <tr>
               <td className="font-bold">{formatDate(d0)}</td>
               <td>
-                <Countdown until={d0} weekdays={[1, 1, 1, 1, 1]} />
+                <Countdown until={d0} weekdays={[1, 2, 2, 4]} />
               </td>
               <td>
-                <Countdown until={d0} weekdays={[1, 1, 1, 1]} />
+                <Countdown until={d0} weekdays={[0, 1, 1, 3, 3]} />
               </td>
               <td>
-                <Countdown until={d0} weekdays={[1, 1, 1]} />
+                <Countdown until={d0} weekdays={[0, 2, 2]} />
               </td>
               <td>
-                <Countdown until={d0} weekdays={[1, 1, 1, 1]} />
+                <Countdown until={d0} weekdays={[3, 3, 4]} />
               </td>
               <td>
-                <Countdown until={d0} weekdays={[1, 1, 1]} />
+                <Countdown until={d0} weekdays={[1, 3]} />
               </td>
               <td>
-                <Countdown until={d0} weekdays={[1, 1]} />
+                <Countdown until={d0} weekdays={[2, 4]} />
               </td>
               <td>
-                <Countdown until={d0} weekdays={[1, 1]} />
+                <Countdown until={d0} weekdays={[0, 0]} />
               </td>
               <td>
-                <Countdown until={d0} weekdays={[1, 1, 1]} />
+                <Countdown until={d0} weekdays={[2, 2]} />
               </td>
             </tr>
           </tbody>
