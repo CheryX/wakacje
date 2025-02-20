@@ -27,7 +27,7 @@ export default function Home() {
 
   const handleCheckboxChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setFinalYear(event.target.checked);
-    setExpiryTimestamp(event.target.checked ? dates.grad_end : dates.end);
+    setExpiryTimestamp(!event.target.checked ? dates.grad_end : dates.end);
 
     restart(expiryTimestamp);
   };
