@@ -27,7 +27,7 @@ export default function Home() {
 
   const handleCheckboxChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setFinalYear(event.target.checked);
-    setExpiryTimestamp(finalYear ? dates.grad_end : dates.end);
+    setExpiryTimestamp(event.target.checked ? dates.grad_end : dates.end);
 
     restart(expiryTimestamp);
   };
@@ -51,7 +51,7 @@ export default function Home() {
   );
 
   return (
-    <main className={`gradient-${gradientType}`}>
+    <main className={`gradient-${gradientType} text-white`}>
       <section className="h-screen max-w-2xl flex flex-col mx-auto items-center justify-center">
         <h1 className="text-5xl font-semibold opacity-80">Ile do wakacji?</h1>
 
