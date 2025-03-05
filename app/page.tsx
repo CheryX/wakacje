@@ -26,10 +26,12 @@ export default function Home() {
   }, [seconds, minutes, hours, days]);
 
   const handleCheckboxChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setFinalYear(event.target.checked);
-    setExpiryTimestamp(!event.target.checked ? dates.grad_end : dates.end);
+    const isChecked = event.target.checked;
+    setFinalYear(isChecked);
+    const newExpiryTimestamp = isChecked ? dates.grad_end : dates.end;
+    setExpiryTimestamp(newExpiryTimestamp);
 
-    restart(expiryTimestamp);
+    restart(newExpiryTimestamp);
   };
 
   let gradientType = 0;
