@@ -142,7 +142,7 @@ export default function Home() {
                 <Countdown until={d1} weekdays={[1, 2, 2, 4]} />
               </td>
               <td>
-                <Countdown until={d1} weekdays={[0, 1, 1, 3, 3]} />
+                <Countdown until={d1} weekdays={[0, 0, 1, 3, 3]} />
               </td>
               <td>
                 <Countdown until={d1} weekdays={[0, 2, 2]} />
@@ -169,7 +169,7 @@ export default function Home() {
                 <Countdown until={d0} weekdays={[1, 2, 2, 4]} />
               </td>
               <td>
-                <Countdown until={d0} weekdays={[0, 1, 1, 3, 3]} />
+                <Countdown until={d0} weekdays={[0, 0, 1, 3, 3]} />
               </td>
               <td>
                 <Countdown until={d0} weekdays={[0, 2, 2]} />
