@@ -40,7 +40,7 @@ export default function Home() {
   } else if (days > 50) {
     gradientType = 1;
   } else if (days > 20) {
-    gradientType = 1;
+    gradientType = 2;
   } else {
     gradientType = 3;
   }
