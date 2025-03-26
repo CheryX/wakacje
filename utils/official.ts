@@ -33,7 +33,7 @@ export default function getAllDates(year: number): Record<DateTypes, Date> {
     grad_end: getSchoolYearGraduationEndDate(year),
     christmas: new Date(year - 1, 11, 23),
     final_grades: new Date(year, 5, 8), // Approximation, based on previous years
-    final_grad_grades: new Date(year, 3, 1), // Approximation
+    final_grad_grades: new Date(year, 3, 9), // Approximation
     start: new Date(year - 1, 8, 1)
   };
 }
