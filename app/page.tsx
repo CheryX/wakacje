@@ -39,7 +39,7 @@ export default function Home() {
     gradientType = 0;
   } else if (days > 50) {
     gradientType = 1;
-  } else if (days > 20) {
+  } else if (days > 25) {
     gradientType = 2;
   } else {
     gradientType = 3;
